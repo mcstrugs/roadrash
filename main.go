@@ -8,12 +8,8 @@ import (
 )
 
 func main() {
-        data, _ := os.ReadFile("rx6000.txt")
-        parsed_data := string(data)
-        lines := strings.Split(parsed_data, "\n")
-        for _, url  := range lines {
-            checkStock(url)
-        }
+    checkList("rtx3000.txt")
+    checkList("rx6000.txt")
 }
 
 func checkStock(url string) bool {
@@ -39,4 +35,19 @@ func checkStock(url string) bool {
     }
 
     return in_stock
+}
+
+func linksFromFile(path string) []string {
+    data, _ := os.ReadFile(path)
+    parsed_data := string(data)
+    return strings.Split(parsed_data, "\n")
+}
+
+func checkList(list string) {
+    lines := linksFromFile(list)
+    for _, url  := range lines {
+        if (!(strings.Compare(url,"") == 0)) {
+            checkStock(url)
+        }
+    }
 }
