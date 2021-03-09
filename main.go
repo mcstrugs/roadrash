@@ -3,12 +3,17 @@ package main
 import (
     "fmt"
     "strings"
+    "os"
     "github.com/asciimoo/colly"
 )
 
 func main() {
-    checkStock("https://www.newegg.com/yeston-rx560d-4g-d5-ga/p/27N-0042-00028")
-    checkStock("https://www.newegg.com/gigabyte-radeon-rx-6800-xt-gv-r68xtaorus-m-16gc/p/N82E16814932392")
+        data, _ := os.ReadFile("rx6000.txt")
+        parsed_data := string(data)
+        lines := strings.Split(parsed_data, "\n")
+        for _, url  := range lines {
+            checkStock(url)
+        }
 }
 
 func checkStock(url string) bool {
