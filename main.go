@@ -22,14 +22,14 @@ func checkStock(url string) bool {
         }
 	})
 
-	c.OnRequest(func(r *colly.Request) {
-		fmt.Println("Visiting", r.URL)
-	})
+	//c.OnRequest(func(r *colly.Request) {
+	//	fmt.Println("Visiting", r.URL)
+	//})
 
 	c.Visit(url)
 
     if(in_stock) {
-        fmt.Println("IN STOCK")
+        fmt.Println("IN STOCK: " + url)
     } else {
         fmt.Println("OUT OF STOCK")
     }
