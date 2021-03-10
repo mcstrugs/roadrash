@@ -29,7 +29,7 @@ func checkStock(url string) bool {
 	c.Visit(url)
 
     if(in_stock) {
-        fmt.Println("IN STOCK: " + url)
+        fmt.Println("\x1B[32mIN STOCK: " + url + "\033[0m\t\t")
     } else {
         fmt.Println("OUT OF STOCK")
     }
